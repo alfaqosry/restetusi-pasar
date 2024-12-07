@@ -31,6 +31,13 @@
                             class="side-menu__icon fe fe-home"></i><span
                             class="side-menu__label">Toko</span></a>
                 </li>
+
+
+                <li class="slide">
+                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="{{route('pedagang.index')}}"><i
+                            class="side-menu__icon fe fe-home"></i><span
+                            class="side-menu__label">Pedagang</span></a>
+                </li>
                 <li class="sub-category">
                     <h3>UI Kit</h3>
                 </li>

@@ -67,6 +67,20 @@
                             <span class="login100-form-title pb-5">
                                 Login
                             </span>
+                            @if (session('error'))
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+                            @if (session('success'))
+                                <div class="alert alert-success">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
                             <div class="panel panel-primary">
 
                                 <div class="panel-body tabs-menu-body p-0 pt-5">
@@ -76,9 +90,9 @@
                                                 data-bs-validate="Valid email is required: ex@abc.xyz">
 
                                                 <input
-                                                    class="input100 border-start-0 form-control ms-0 @error('username') is-invalid @enderror"
-                                                    type="text" name="username" placeholder="Email">
-                                                @error('username')
+                                                    class="input100 border-start-0 form-control ms-0 @error('email') is-invalid @enderror"
+                                                    type="email" name="email"  value="{{old('email')}}" placeholder="Email">
+                                                @error('email')
                                                     <div class="invalid-feedback">{{ $message }}</div>
                                                 @enderror
                                             </div>
@@ -98,7 +112,8 @@
 
 
                                             <div class="text-center pt-3">
-                                                <p class="text-dark mb-0">Apakah Anda Pedagang?<a href="register.html"
+                                                <p class="text-dark mb-0">Apakah Anda Pedagang?<a
+                                                        href="{{ route('auth.register') }}"
                                                         class="text-primary ms-1">Daftar</a></p>
                                             </div>
 

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Toko;
 
 use Illuminate\Http\Request;
 
@@ -11,7 +12,9 @@ class TokoController extends Controller
      */
     public function index()
     {
-        return view('page.toko.index');
+
+        $toko = Toko::all();
+        return view('page.toko.index' , compact('toko'));
     }
 
     /**
@@ -19,7 +22,7 @@ class TokoController extends Controller
      */
     public function create()
     {
-        //
+        return view('page.toko.create');
     }
 
     /**
@@ -27,7 +30,29 @@ class TokoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $request->validate([
+            'kode_toko' => 'required|string|max:255',
+            'luas' => 'required|numeric',
+            'deskripsi' => 'nullable|string',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+      
+        $filePath = null;
+        if ($request->hasFile('foto')) {
+            $file = $request->file('foto');
+            $filePath = $file->storeAs('public/uploads/toko', $file->getClientOriginalName());
+        }
+
+        Toko::create([
+            'kode_toko' => $request->kode_toko,
+            'luas' => $request->luas,
+            'deskripsi' => $request->deskripsi,
+            'foto' => $filePath ? str_replace('public/', 'storage/', $filePath) : null,
+        ]);
+
+        return redirect()->route('toko.index')->with('success', 'Data toko berhasil ditambahkan.');
     }
 
     /**
@@ -43,7 +68,8 @@ class TokoController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $toko = Toko::findOrFail($id);
+        return view('page.toko.edit', compact('toko'));
     }
 
     /**

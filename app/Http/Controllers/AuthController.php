@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\Auth;
 
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
@@ -15,26 +18,27 @@ class AuthController extends Controller
         //
     }
 
-    public function login() {
+    public function login()
+    {
         return view('page.auth.login');
-
     }
 
 
-    public function post(Request $request){
+    public function post(Request $request)
+    {
         $request->validate([
-            'username' => 'required',
+            'email' => 'required',
             'password' => 'required',
         ]);
 
-        $credentials = $request->only('username', 'password');
+        $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
 
-            return redirect()->intended('dashboard')->with('success', 'Login successful');
+            return redirect()->route('dashboard.index')->with('success', 'Login successful');
         }
 
         return back()->withErrors([
-            'username' => 'Username atau password salah.',
+            'email' => 'Username atau password salah.',
         ])->withInput();
     }
     /**
@@ -45,13 +49,44 @@ class AuthController extends Controller
         //
     }
 
+    public function register()
+    {
+        return view('page.auth.register');
+    }
+
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'nik' => 'required|string|max:20',
+            'no_hp' => 'required|string|max:15',
+            'alamat' => 'required|string',
+            'jenis_dagangan' => 'required|string|max:255',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'nik' => $request->nik,
+            'no_hp' => $request->no_hp,
+            'alamat' => $request->alamat,
+            'jenis_dagangan' => $request->jenis_dagangan,
+            'role' => 'pedagang',
+            'password' => Hash::make($request->password),
+        ]);
+
+        return redirect()->route('auth.login')->with('success', 'Akun berhasil dibuat.');
     }
+
 
     /**
      * Display the specified resource.

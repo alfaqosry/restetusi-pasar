@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('no_hp');
             $table->string('alamat');
             $table->string('jenis_dagangan');
+            $table->string('role');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

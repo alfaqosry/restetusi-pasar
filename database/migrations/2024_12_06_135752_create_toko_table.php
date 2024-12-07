@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('kode_toko');
             $table->string('luas');
-            $table->string('deskripsi');
+            $table->string('deskripsi')->nullable();
             $table->string('foto');
             $table->timestamps();
         });

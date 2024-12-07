@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Toko extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'kode_toko',
+        'luas',
+        'deskripsi',
+        'foto',
+    ];
+    protected $table = 'toko';
 }
