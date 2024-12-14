@@ -29,12 +29,12 @@ Route::post('/login/store', [AuthController::class, 'store'])->name('register.st
 Route::get('/toko', [TokoController::class, 'index'])->name('toko.index');
 Route::get('/toko/create', [TokoController::class, 'create'])->name('toko.create');
 Route::post('/toko/store', [TokoController::class, 'store'])->name('toko.store');
-Route::get('/toko/create/{id}', [TokoController::class, 'edit'])->name('toko.edit');
+Route::get('/toko/edit/{id}', [TokoController::class, 'edit'])->name('toko.edit');
 Route::post('/toko/update/{id}', [TokoController::class, 'update'])->name('toko.update');
 
 Route::get('/pedagang', [PedagangController::class, 'index'])->name('pedagang.index');
 Route::get('/pedagang/create', [PedagangController::class, 'create'])->name('pedagang.create');
 Route::post('/pedagang/store', [PedagangController::class, 'store'])->name('pedagang.store');
-Route::get('/pedagang/create/{id}', [PedagangController::class, 'edit'])->name('pedagang.edit');
+Route::get('/pedagang/edit/{id}', [PedagangController::class, 'edit'])->name('pedagang.edit');
 Route::post('/pedagang/update/{id}', [PedagangController::class, 'update'])->name('pedagang.update');
 

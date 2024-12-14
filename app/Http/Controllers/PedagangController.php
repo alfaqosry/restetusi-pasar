@@ -21,7 +21,7 @@ class PedagangController extends Controller
      */
     public function create()
     {
-        //
+        return view('page.pedagang.create');
     }
 
     /**
@@ -45,7 +45,8 @@ class PedagangController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $pedagang = User::findOrFail($id);
+        return view('page.pedagang.edit', compact('pedagang'));
     }
 
     /**
