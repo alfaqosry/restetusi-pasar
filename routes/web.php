@@ -4,6 +4,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PedagangController;
 use App\Http\Controllers\TokoController;
+use App\Http\Controllers\SewatempatController;
+use App\Models\Sewatempat;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,3 +40,6 @@ Route::post('/pedagang/store', [PedagangController::class, 'store'])->name('peda
 Route::get('/pedagang/edit/{id}', [PedagangController::class, 'edit'])->name('pedagang.edit');
 Route::post('/pedagang/update/{id}', [PedagangController::class, 'update'])->name('pedagang.update');
 
+
+
+Route::get('/sewatempat/create', [SewatempatController::class, 'create'])->name('sewatempat.create');
