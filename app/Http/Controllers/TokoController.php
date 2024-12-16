@@ -36,6 +36,7 @@ class TokoController extends Controller
             'luas' => 'required|numeric',
             'deskripsi' => 'nullable|string',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'biaya_restetusi' =>'required|numeric'
         ]);
 
       
@@ -49,6 +50,7 @@ class TokoController extends Controller
             'kode_toko' => $request->kode_toko,
             'luas' => $request->luas,
             'deskripsi' => $request->deskripsi,
+            'biaya_restetusi' => $request->biaya_restetusi,
             'foto' => $filePath ? str_replace('public/', 'storage/', $filePath) : null,
         ]);
 

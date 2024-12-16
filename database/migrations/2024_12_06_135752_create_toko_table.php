@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('luas');
             $table->string('deskripsi')->nullable();
             $table->string('foto');
+            $table->string('biaya_restetusi');
             $table->timestamps();
         });
     }

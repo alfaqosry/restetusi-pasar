@@ -32,8 +32,22 @@
                                     <div class="form-group">
                                         <input type="text"
                                             class="form-control @error('kode_toko') is-invalid @enderror"
-                                            name="kode_toko" id="kodetoko" placeholder="Kode Toko" value="{{$toko->kode_toko}}">
+                                            name="kode_toko" id="kodetoko" placeholder="Kode Toko"
+                                            value="{{ $toko->kode_toko }}">
                                         @error('kode_toko')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-md-6 mb-0">
+                                    <div class="form-group">
+                                        <input type="text"
+                                            class="form-control @error('biaya_restetusi') is-invalid @enderror"
+                                            name="biaya_restetusi" id="kodetoko" placeholder="Biaya restetusi">
+                                        @error('biaya_restetusi')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
@@ -42,9 +56,9 @@
                                 </div>
                                 <div class="form-group col-md-6 mb-0">
                                     <div class="form-group">
-                                        <input type="text"
-                                            class="form-control @error('luas') is-invalid @enderror" name="luas"
-                                            id="luas" placeholder="Luas Toko" value="{{$toko->luas}}">
+                                        <input type="text" class="form-control @error('luas') is-invalid @enderror"
+                                            name="luas" id="luas" placeholder="Luas Toko"
+                                            value="{{ $toko->luas }}">
                                         @error('luas')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -59,7 +73,8 @@
                                     <div class="form-group">
                                         <input type="text"
                                             class="form-control @error('deskripsi') is-invalid @enderror"
-                                            name="deskripsi" id="deskripsi" placeholder="Deskripsi" value="{{$toko->deskripsi}}">
+                                            name="deskripsi" id="deskripsi" placeholder="Deskripsi"
+                                            value="{{ $toko->deskripsi }}">
                                         @error('deskripsi')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -71,16 +86,19 @@
                                     <div class="form-group d-flex align-items-center">
                                         <!-- Foto yang sudah diunggah -->
                                         <div class="mr-5">
-                                            @if($toko->foto)
-                                                <img src="{{ asset($toko->foto) }}" alt="Foto Toko" style="width: 100px; height: 100px; object-fit: cover;">
+                                            @if ($toko->foto)
+                                                <img src="{{ asset($toko->foto) }}" alt="Foto Toko"
+                                                    style="width: 100px; height: 100px; object-fit: cover;">
                                             @else
-                                                <img src="{{ asset('img/default.jpg') }}" alt="Default Foto" style="width: 100px; height: 100px; object-fit: cover;">
+                                                <img src="{{ asset('img/default.jpg') }}" alt="Default Foto"
+                                                    style="width: 100px; height: 100px; object-fit: cover;">
                                             @endif
                                         </div>
-                                
+
                                         <!-- Input untuk mengganti foto -->
                                         <div>
-                                            <input class="form-control @error('foto') is-invalid @enderror" name="foto" type="file">
+                                            <input class="form-control @error('foto') is-invalid @enderror"
+                                                name="foto" type="file">
                                             @error('foto')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}

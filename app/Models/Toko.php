@@ -13,6 +13,7 @@ class Toko extends Model
         'luas',
         'deskripsi',
         'foto',
+        'biaya_restetusi'
     ];
     protected $table = 'toko';
 }

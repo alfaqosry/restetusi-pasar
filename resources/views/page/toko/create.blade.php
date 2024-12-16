@@ -40,11 +40,27 @@
                                         @enderror
                                     </div>
                                 </div>
+
                                 <div class="form-group col-md-6 mb-0">
                                     <div class="form-group">
                                         <input type="text"
-                                            class="form-control @error('luas') is-invalid @enderror" name="luas"
-                                            id="luas" placeholder="Luas Toko">
+                                            class="form-control @error('biaya_restetusi') is-invalid @enderror"
+                                            name="biaya_restetusi" id="kodetoko" placeholder="Biaya restetusi">
+                                        @error('biaya_restetusi')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                </div>
+                               
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6 mb-0">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control @error('luas') is-invalid @enderror"
+                                            name="luas" id="luas" placeholder="Luas Toko">
                                         @error('luas')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -52,10 +68,25 @@
                                         @enderror
                                     </div>
                                 </div>
+                               
+                                <div class="form-group col-md-6 mb-0">
+                                    <div class="form-group">
+                                        <input class="form-control @error('foto') is-invalid @enderror" name="foto"
+                                            type="file">
+                                        @error('foto')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                </div>
+
                             </div>
 
+
                             <div class="form-row">
-                                <div class="form-group col-md-6 mb-0">
+                               
+                                <div class="form-group col-md-12 mb-0">
                                     <div class="form-group">
                                         <input type="text"
                                             class="form-control @error('deskripsi') is-invalid @enderror"
@@ -67,17 +98,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="form-group col-md-6 mb-0">
-                                    <div class="form-group">
-                                        <input class="form-control @error('foto') is-invalid @enderror"
-                                            name="foto" type="file">
-                                        @error('foto')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
-                                    </div>
-                                </div>
+                              
 
                             </div>
 
