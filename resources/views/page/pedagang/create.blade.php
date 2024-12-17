@@ -24,7 +24,7 @@
                         <h3 class="card-title">Tambah Pedagang</h3>
                     </div>
                     <div class="card-body">
-                        <form class="row" method="POST" action="{{ route('toko.store') }}"
+                        <form class="row" method="POST" action="{{ route('register.store') }}"
                             enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <div class="form-row">

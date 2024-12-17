@@ -39,7 +39,7 @@
                             class="side-menu__label">Pedagang</span></a>
                 </li>
                 <li class="slide">
-                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="{{route('sewatempat.create')}}"><i
+                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="{{route('sewatempat.index')}}"><i
                             class="side-menu__icon fe fe-home"></i><span
                             class="side-menu__label">Sewa Tempat</span></a>
                 </li>

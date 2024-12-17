@@ -12,7 +12,8 @@ class SewatempatController extends Controller
      */
     public function index()
     {
-        //
+        $toko = Toko::all();
+        return view('page.penyewaan.index',compact('toko'));
     }
 
     /**
@@ -37,7 +38,9 @@ class SewatempatController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $toko = Toko::findOrFail($id);
+
+        return view('page.penyewaan.show', compact('toko'));
     }
 
     /**

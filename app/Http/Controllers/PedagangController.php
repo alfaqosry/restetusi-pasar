@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class PedagangController extends Controller
 {
@@ -29,7 +31,32 @@ class PedagangController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'nik' => 'required|string|max:20',
+            'no_hp' => 'required|string|max:15',
+            'alamat' => 'required|string',
+            'jenis_dagangan' => 'required|string|max:255',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'nik' => $request->nik,
+            'no_hp' => $request->no_hp,
+            'alamat' => $request->alamat,
+            'jenis_dagangan' => $request->jenis_dagangan,
+            'role' => 'pedagang',
+            'password' => Hash::make($request->password),
+        ]);
+
+        return redirect()->back()->with('success', 'Akun berhasil dibuat.');
     }
 
     /**

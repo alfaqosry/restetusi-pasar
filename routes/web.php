@@ -26,7 +26,7 @@ Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
 Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
 Route::get('/register', [AuthController::class, 'register'])->name('auth.register');
 Route::post('/login/post', [AuthController::class, 'post'])->name('auth.post');
-Route::post('/login/store', [AuthController::class, 'store'])->name('register.store');
+Route::post('/register/store', [AuthController::class, 'store'])->name('register.store');
 
 Route::get('/toko', [TokoController::class, 'index'])->name('toko.index');
 Route::get('/toko/create', [TokoController::class, 'create'])->name('toko.create');
@@ -41,5 +41,7 @@ Route::get('/pedagang/edit/{id}', [PedagangController::class, 'edit'])->name('pe
 Route::post('/pedagang/update/{id}', [PedagangController::class, 'update'])->name('pedagang.update');
 
 
-
+Route::get('/sewatempat', [SewatempatController::class, 'index'])->name('sewatempat.index');
 Route::get('/sewatempat/create', [SewatempatController::class, 'create'])->name('sewatempat.create');
+Route::get('/sewatempat/show/{id}', [SewatempatController::class, 'show'])->name('sewatempat.show');
+
