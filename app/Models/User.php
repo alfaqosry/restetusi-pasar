@@ -40,4 +40,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function tokos()
+    {
+        return $this->belongsToMany(Toko::class, 'penyewans', 'user_id', 'toko_id');
+    }
 }

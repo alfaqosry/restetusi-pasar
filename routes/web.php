@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PedagangController;
 use App\Http\Controllers\TokoController;
 use App\Http\Controllers\SewatempatController;
+use App\Http\Controllers\TransactionController;
 use App\Models\Sewatempat;
 use Illuminate\Support\Facades\Route;
 
@@ -44,4 +45,8 @@ Route::post('/pedagang/update/{id}', [PedagangController::class, 'update'])->nam
 Route::get('/sewatempat', [SewatempatController::class, 'index'])->name('sewatempat.index');
 Route::get('/sewatempat/create', [SewatempatController::class, 'create'])->name('sewatempat.create');
 Route::get('/sewatempat/show/{id}', [SewatempatController::class, 'show'])->name('sewatempat.show');
+
+Route::get('/transaction/success/{transaction}', [TransactionController::class, 'success'])->name('transaction.success');
+
+
 

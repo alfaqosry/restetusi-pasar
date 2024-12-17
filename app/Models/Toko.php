@@ -16,4 +16,14 @@ class Toko extends Model
         'biaya_restetusi'
     ];
     protected $table = 'toko';
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
+    public function penyewas()
+    {
+        return $this->belongsToMany(User::class, 'penyewans', 'toko_id', 'user_id');
+    }
+    
 }

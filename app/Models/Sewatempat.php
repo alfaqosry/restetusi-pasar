@@ -14,5 +14,6 @@ class Sewatempat extends Model
         'batas_sewa',
   
     ];
+    protected $table = 'sewatempat';
     
 }

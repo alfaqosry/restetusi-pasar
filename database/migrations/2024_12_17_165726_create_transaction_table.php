@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sewatempat', function (Blueprint $table) {
+        Schema::create('transaction', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('toko_id')->constrained('toko')->onDelete('cascade');
-            $table->string('batas_sewa')->nullable();
+            $table->integer('price');
+            $table->enum('status',['pending', 'success', 'failed']);
+            $table->string('snap_token')->nullable();
             $table->timestamps();
         });
     }
@@ -25,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('sewatempat');
+        Schema::dropIfExists('transaction');
     }
 };

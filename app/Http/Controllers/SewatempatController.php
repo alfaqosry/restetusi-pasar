@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Toko;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 
 class SewatempatController extends Controller
@@ -13,6 +14,7 @@ class SewatempatController extends Controller
     public function index()
     {
         $toko = Toko::all();
+        
         return view('page.penyewaan.index',compact('toko'));
     }
 
@@ -40,7 +42,38 @@ class SewatempatController extends Controller
     {
         $toko = Toko::findOrFail($id);
 
-        return view('page.penyewaan.show', compact('toko'));
+      
+
+        \Midtrans\Config::$serverKey = config('midtrans.serverKey');
+        \Midtrans\Config::$isProduction = false;
+        \Midtrans\Config::$isSanitized = true;
+        \Midtrans\Config::$is3ds = true;
+
+        $params = array(
+            'transaction_details' => array(
+                'order_id' => rand(),
+                'gross_amount' => $toko->biaya_restetusi,
+            ),
+            'customer_details' => array(
+                'first_name' => Auth()->user()->name,
+                'email' => Auth()->user()->email,
+            )
+        );
+    
+        $snapToken = \Midtrans\Snap::getSnapToken($params);
+
+       
+
+        $transaction = Transaction::create([
+            'user_id' => Auth()->user()->id,
+            'toko_id' => $toko->id,
+            'price' => $toko->biaya_restetusi,
+            'status' => 'pending',
+            'snap_token' =>   $snapToken
+        ]);
+        
+
+        return view('page.penyewaan.show', compact('toko','transaction'));
     }
 
     /**
