@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Transaction;
 use App\Models\Sewatempat;
+use App\Models\Toko;
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller
@@ -13,29 +14,28 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        //
+
+        $transaction = Transaction::all();
+        return view('page.transaction.index', compact('transaction'));
     }
 
 
-    public function success(Transaction $transaction){
+    public function success(Transaction $transaction)
+    {
 
 
+        $transaction->metode_pembayaran = "Online Payment";
         $transaction->status = "success";
         $transaction->save();
 
         $transaction->with('user')->with('toko')->first();
 
-        $sewa = Sewatempat::create([
-            'user_id' => $transaction->user_id,
-            'toko_id' => $transaction->toko_id,
-        ]);
-        
+
+        $toko = Toko::find($transaction->toko_id);
+        $toko->user_id = $transaction->user_id;
+        $toko->save();
+
         return view('page.transaction.status', compact('transaction'));
-
-
-        
-
-
     }
 
     /**

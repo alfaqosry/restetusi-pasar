@@ -21,9 +21,9 @@ class Toko extends Model
     {
         return $this->hasMany(Transaction::class);
     }
-    public function penyewas()
+    public function user()
     {
-        return $this->belongsToMany(User::class, 'penyewans', 'toko_id', 'user_id');
+        return $this->belongsTo(User::class);
     }
     
 }

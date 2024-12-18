@@ -45,7 +45,9 @@ Route::post('/pedagang/update/{id}', [PedagangController::class, 'update'])->nam
 Route::get('/sewatempat', [SewatempatController::class, 'index'])->name('sewatempat.index');
 Route::get('/sewatempat/create', [SewatempatController::class, 'create'])->name('sewatempat.create');
 Route::get('/sewatempat/show/{id}', [SewatempatController::class, 'show'])->name('sewatempat.show');
+Route::get('/sewatempat/getsewabyid/{id}', [SewatempatController::class, 'getsewabyid'])->name('sewatempat.getsewabyid');
 
+Route::get('/transaction', [TransactionController::class, 'index'])->name('transaction.index');
 Route::get('/transaction/success/{transaction}', [TransactionController::class, 'success'])->name('transaction.success');
 
 

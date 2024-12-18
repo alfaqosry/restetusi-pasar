@@ -13,7 +13,9 @@ class Transaction extends Model
         'toko_id',
         'price',
         'status',
-        'snap_token'
+        'snap_token',
+        'metode_pembayaran',
+        'order_id',
     ];
 
     protected $table = 'transaction';

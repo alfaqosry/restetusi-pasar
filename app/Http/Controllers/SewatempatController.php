@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Toko;
+use App\Models\User;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 
@@ -14,17 +15,24 @@ class SewatempatController extends Controller
     public function index()
     {
         $toko = Toko::all();
-        
-        return view('page.penyewaan.index',compact('toko'));
+
+        return view('page.penyewaan.index', compact('toko'));
     }
 
+
+    public function getsewabyid($id)
+    {
+        $user = User::with('tokos')->find(1); 
+       
+        return view('page.penyewaan.sewatokosaya', compact('user'));
+    }
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
         $toko = Toko::all();
-        return view('page.penyewaan.create',compact('toko'));
+        return view('page.penyewaan.create', compact('toko'));
     }
 
     /**
@@ -42,7 +50,7 @@ class SewatempatController extends Controller
     {
         $toko = Toko::findOrFail($id);
 
-      
+
 
         \Midtrans\Config::$serverKey = config('midtrans.serverKey');
         \Midtrans\Config::$isProduction = false;
@@ -59,10 +67,10 @@ class SewatempatController extends Controller
                 'email' => Auth()->user()->email,
             )
         );
-    
+
         $snapToken = \Midtrans\Snap::getSnapToken($params);
 
-       
+
 
         $transaction = Transaction::create([
             'user_id' => Auth()->user()->id,
@@ -71,9 +79,9 @@ class SewatempatController extends Controller
             'status' => 'pending',
             'snap_token' =>   $snapToken
         ]);
-        
 
-        return view('page.penyewaan.show', compact('toko','transaction'));
+
+        return view('page.penyewaan.show', compact('toko', 'transaction'));
     }
 
     /**

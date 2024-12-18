@@ -43,6 +43,6 @@ class User extends Authenticatable
 
     public function tokos()
     {
-        return $this->belongsToMany(Toko::class, 'penyewans', 'user_id', 'toko_id');
+        return $this->hasMany(Toko::class);
     }
 }

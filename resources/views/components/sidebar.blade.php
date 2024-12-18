@@ -43,6 +43,16 @@
                             class="side-menu__icon fe fe-home"></i><span
                             class="side-menu__label">Sewa Tempat</span></a>
                 </li>
+                <li class="slide">
+                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="{{route('sewatempat.getsewabyid', Auth()->user()->id)}}"><i
+                            class="side-menu__icon fe fe-home"></i><span
+                            class="side-menu__label">Tempat Dagangan Saya</span></a>
+                </li>
+                <li class="slide">
+                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="{{route('transaction.index')}}"><i
+                            class="side-menu__icon fe fe-home"></i><span
+                            class="side-menu__label">Transaksi</span></a>
+                </li>
              
             </ul>
             <div class="slide-right" id="slide-right"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191"

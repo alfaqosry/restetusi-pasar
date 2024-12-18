@@ -18,6 +18,8 @@ return new class extends Migration
             $table->integer('price');
             $table->enum('status',['pending', 'success', 'failed']);
             $table->string('snap_token')->nullable();
+            $table->string('metode_pembayaran')->nullable();
+            $table->string('order_id')->nullable();
             $table->timestamps();
         });
     }

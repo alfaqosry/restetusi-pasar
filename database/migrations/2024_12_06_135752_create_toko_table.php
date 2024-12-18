@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('deskripsi')->nullable();
             $table->string('foto');
             $table->string('biaya_restetusi');
+            $table->unsignedBigInteger('user_id')->nullable()->index();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
             $table->timestamps();
         });
     }
