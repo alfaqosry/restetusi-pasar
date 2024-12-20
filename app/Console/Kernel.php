@@ -13,6 +13,8 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule): void
     {
         // $schedule->command('inspire')->hourly();
+        $schedule->command('invoice:generate')
+        ->weeklyOn(2, '00:00'); // Menjalankan setiap hari Selasa jam 00:00
     }
 
     /**
