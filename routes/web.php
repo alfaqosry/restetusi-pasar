@@ -26,11 +26,12 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
-Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
+Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/register', [AuthController::class, 'register'])->name('auth.register');
 Route::post('/login/post', [AuthController::class, 'post'])->name('auth.post');
 Route::post('/register/store', [AuthController::class, 'store'])->name('register.store');
 
+Route::middleware(['auth'])->group(function () {
 Route::get('/toko', [TokoController::class, 'index'])->name('toko.index');
 Route::get('/toko/create', [TokoController::class, 'create'])->name('toko.create');
 Route::post('/toko/store', [TokoController::class, 'store'])->name('toko.store');
@@ -56,4 +57,4 @@ Route::get('/invoice/{id}', [InvoiceController::class, 'tagihbyid'])->name('tran
 Route::get('/invoice/show/{id}', [InvoiceController::class, 'show'])->name('transaction.show');
 
 
-
+});

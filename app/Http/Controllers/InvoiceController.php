@@ -15,12 +15,12 @@ class InvoiceController extends Controller
 
     public function tagihanall()
     {
-        $tagihan = Invoice::where('status','pending')->all();
+        $tagihan = Invoice::all();
     }
 
     public function tagihbyid($id)
     {
-        $tagihan = Invoice::where('user_id', $id)->where('status','pending')->get();
+        $tagihan = Invoice::where('user_id', $id)->get();
 
         return view('page.tagihan.tagihanbyid', compact('tagihan'));
     }

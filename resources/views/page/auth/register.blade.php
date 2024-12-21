@@ -121,7 +121,7 @@
                     </button>
                 </div>
                 <div class="text-center pt-3">
-                    <p class="text-dark mb-0 d-inline-flex">Belum memiliki akun ?<a href="{{ route('auth.login') }}"
+                    <p class="text-dark mb-0 d-inline-flex">Sudah memiliki akun ?<a href="{{ route('login') }}"
                             class="text-primary ms-1">Masuk</a></p>
                 </div>
 

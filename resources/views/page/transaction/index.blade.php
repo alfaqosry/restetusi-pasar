@@ -29,16 +29,16 @@
                                             <!-- Tabs -->
                                             <ul class="nav panel-tabs product-sale" role="tablist">
                                                 <li><a href="#tab5" class="active" data-bs-toggle="tab"
-                                                        aria-selected="true" role="tab">All products</a></li>
+                                                        aria-selected="true" role="tab">Semua Transaksi</a></li>
                                                 <li><a href="#tab6" data-bs-toggle="tab" class="text-dark"
-                                                        aria-selected="false" role="tab" tabindex="-1">Shipped</a>
+                                                        aria-selected="false" role="tab" tabindex="-1">Berhasil</a>
                                                 </li>
                                                 <li><a href="#tab7" data-bs-toggle="tab" class="text-dark"
                                                         aria-selected="false" role="tab" tabindex="-1">Pending</a>
                                                 </li>
                                                 <li><a href="#tab8" data-bs-toggle="tab" class="text-dark"
                                                         aria-selected="false" role="tab"
-                                                        tabindex="-1">Cancelled</a></li>
+                                                        tabindex="-1">Dibatalkan</a></li>
                                             </ul>
                                         </div>
                                     </div>
