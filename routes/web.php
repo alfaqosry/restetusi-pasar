@@ -6,6 +6,8 @@ use App\Http\Controllers\PedagangController;
 use App\Http\Controllers\TokoController;
 use App\Http\Controllers\SewatempatController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\InvoiceController;
+use App\Models\Invoice;
 use App\Models\Sewatempat;
 use Illuminate\Support\Facades\Route;
 
@@ -49,6 +51,9 @@ Route::get('/sewatempat/getsewabyid/{id}', [SewatempatController::class, 'getsew
 
 Route::get('/transaction', [TransactionController::class, 'index'])->name('transaction.index');
 Route::get('/transaction/success/{transaction}', [TransactionController::class, 'success'])->name('transaction.success');
+
+Route::get('/invoice/{id}', [InvoiceController::class, 'tagihbyid'])->name('transaction.tagihbyid');
+Route::get('/invoice/show/{id}', [InvoiceController::class, 'show'])->name('transaction.show');
 
 
 

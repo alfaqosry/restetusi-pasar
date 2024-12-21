@@ -15,4 +15,14 @@ class Invoice extends Model
         'status',
   
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function transaction()
+    {
+        return $this->belongsTo(Invoice::class);
+    }
 }

@@ -14,11 +14,12 @@ return new class extends Migration
         Schema::create('transaction', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->foreignId('toko_id')->constrained('toko')->onDelete('cascade');
+            $table->foreignId('invoice_id')->constrained('invoices')->onDelete('cascade');
             $table->integer('price');
             $table->enum('status',['pending', 'success', 'failed']);
             $table->string('snap_token')->nullable();
             $table->string('metode_pembayaran')->nullable();
+            $table->string('keterangan')->nullable();
             $table->string('order_id')->nullable();
             $table->timestamps();
         });

@@ -65,12 +65,12 @@
                                         <table class="table table-bordered">
                                             <tbody>
                                                 <tr>
-                                                    <td class="fw-bold">Kode Toko</td>
-                                                    <td>{{$transaction->toko->kode_toko}}</td>
+                                                    <td class="fw-bold">Order ID</td>
+                                                    <td>{{$transaction->order_id}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="fw-bold">Luas</td>
-                                                    <td>{{$transaction->toko->luas}}</td>
+                                                    <td class="fw-bold">Tanggal</td>
+                                                    <td>{{$transaction->created_at}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="fw-bold">Biaya</td>

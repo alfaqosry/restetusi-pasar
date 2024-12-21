@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Transaction;
+use App\Models\Invoice;
 use App\Models\Sewatempat;
 use App\Models\Toko;
 use Illuminate\Http\Request;
@@ -15,7 +16,7 @@ class TransactionController extends Controller
     public function index()
     {
 
-        $transaction = Transaction::all();
+        $transaction = Transaction::with('invoice')->get();
         return view('page.transaction.index', compact('transaction'));
     }
 
@@ -28,15 +29,17 @@ class TransactionController extends Controller
         $transaction->status = "success";
         $transaction->save();
 
-        $transaction->with('user')->with('toko')->first();
+        $transaction->with('invoice.user')->first();
 
+        $invoice = Invoice::find($transaction->invoice_id);
+        $invoice->status = "success";
+        $invoice->save();
 
-        $toko = Toko::find($transaction->toko_id);
-        $toko->user_id = $transaction->user_id;
-        $toko->save();
-
-        return view('page.transaction.status', compact('transaction'));
+        return view('page.transaction.status', compact('transaction','invoice'));
     }
+
+
+    public function tagihan() {}
 
     /**
      * Show the form for creating a new resource.

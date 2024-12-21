@@ -3,7 +3,7 @@
 
         <!-- PAGE-HEADER -->
         <div class="page-header">
-            <h1 class="page-title">Status</h1>
+            <h1 class="page-title">Tagihan Restribusi</h1>
             <div>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="javascript:void(0)">Transaksi</a></li>
@@ -18,7 +18,7 @@
             <div class="col-12 col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title mb-0">Product Sales</h3>
+                        <h3 class="card-title mb-0">Tagihan Restribusi</h3>
                     </div>
                     <div class="card-body pt-4">
                         <div class="grid-margin">
@@ -97,24 +97,10 @@
                                                                             <th class="bg-transparent border-bottom-0 sorting_disabled"
                                                                                 style="width: 88.7188px;"
                                                                                 rowspan="1" colspan="1"
-                                                                                aria-label="Tracking Id">Order ID
+                                                                                aria-label="Tracking Id">Tracking Id
                                                                             </th>
-                                                                            <th class="bg-transparent border-bottom-0 sorting"
-                                                                                tabindex="0"
-                                                                                aria-controls="data-table"
-                                                                                rowspan="1" colspan="1"
-                                                                                aria-label="
-                                                                    Product: activate to sort column ascending"
-                                                                                style="width: 245.562px;">
-                                                                                Product</th>
-                                                                            <th class="bg-transparent border-bottom-0 sorting"
-                                                                                tabindex="0"
-                                                                                aria-controls="data-table"
-                                                                                rowspan="1" colspan="1"
-                                                                                aria-label="
-                                                                    Customer: activate to sort column ascending"
-                                                                                style="width: 191.422px;">
-                                                                                Customer</th>
+                                                                           
+                                                                            
                                                                             <th class="bg-transparent border-bottom-0 sorting"
                                                                                 tabindex="0"
                                                                                 aria-controls="data-table"
@@ -129,12 +115,7 @@
                                                                     Amount"
                                                                                 style="width: 152.328px;">
                                                                                 Amount</th>
-                                                                            <th class="bg-transparent border-bottom-0 sorting_disabled"
-                                                                                rowspan="1" colspan="1"
-                                                                                aria-label="
-                                                                    Payment Mode"
-                                                                                style="width: 208.188px;">
-                                                                                Payment Mode</th>
+                                                                           
                                                                             <th class="bg-transparent border-bottom-0 sorting"
                                                                                 style="width: 104.719px;"
                                                                                 tabindex="0"
@@ -142,66 +123,47 @@
                                                                                 rowspan="1" colspan="1"
                                                                                 aria-label="Status: activate to sort column ascending">
                                                                                 Status</th>
-                                                                          
+                                                                            <th class="bg-transparent border-bottom-0 sorting"
+                                                                                style="width: 51.6406px;"
+                                                                                tabindex="0"
+                                                                                aria-controls="data-table"
+                                                                                rowspan="1" colspan="1"
+                                                                                aria-label="Action: activate to sort column ascending">
+                                                                                Action</th>
                                                                         </tr>
                                                                     </thead>
                                                                     <tbody>
-                                                                        @foreach ($transaction as $item)
+                                                                        @foreach ($tagihan as $item)
                                                                             <tr class="border-bottom odd">
                                                                                 <td class="text-center">
                                                                                     <div class="mt-0 mt-sm-2 d-block">
                                                                                         <h6
                                                                                             class="mb-0 fs-14 fw-semibold">
-                                                                                            #{{$item->order_id}}</h6>
+                                                                                            #98765490</h6>
                                                                                     </div>
                                                                                 </td>
-                                                                                <td>
-                                                                                    <div class="d-flex">
-                                                                                        <span class="avatar bradius"
-                                                                                            style="background-image: url(../assets/images/orders/10.jpg)"></span>
-                                                                                        <div
-                                                                                            class="ms-3 mt-0 mt-sm-2 d-block">
-                                                                                            <h6
-                                                                                                class="mb-0 fs-14 fw-semibold">
-                                                                                                {{$item->keterangan}}</h6>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <div class="d-flex">
-                                                                                        <div
-                                                                                            class="mt-0 mt-sm-3 d-block">
-                                                                                            <h6
-                                                                                                class="mb-0 fs-14 fw-semibold">
-                                                                                                {{$item->user->name}}</h6>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </td>
+                                                                                
+                                                                               
                                                                                 <td><span class="mt-sm-2 d-block">30
                                                                                         {{{$item->created_at}}}</span></td>
                                                                                 <td><span
-                                                                                        class="fw-semibold mt-sm-2 d-block">{{$item->price}}</span>
+                                                                                        class="fw-semibold mt-sm-2 d-block">{{$item->amount}}</span>
                                                                                 </td>
-                                                                                <td>
-                                                                                    <div class="d-flex">
-                                                                                        <div
-                                                                                            class="mt-0 mt-sm-3 d-block">
-                                                                                            <h6
-                                                                                                class="mb-0 fs-14 fw-semibold">
-                                                                                                Online Payment</h6>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </td>
+                                                                               
                                                                                 <td>
                                                                                     <div class="mt-sm-1 d-block">
                                                                                         <span
-                                                                                            class="badge @if($item->status == 'pending')bg-warning-transparent @elseif($item->status == 'success')bg-success-transparent @endif rounded-pill text-success p-2 px-3">{{
-                                                                                                $item->status
-                                                                                        
-                                                                                        }}</span>
+                                                                                            class="badge bg-success-transparent rounded-pill text-success p-2 px-3">{{$item->status}}</span>
                                                                                     </div>
                                                                                 </td>
-                                                                              
+                                                                                <td>
+                                                                                    <div class="g-2">
+                                                                                        <a class="btn btn-primary btn-sm" href="{{route('transaction.show', $item->id)}}">
+                                                                                        Bayar
+                                                                                        </a>
+                                                                                        
+                                                                                    </div>
+                                                                                </td>
                                                                             </tr>
 
                                                                             @endforeach

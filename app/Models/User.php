@@ -45,4 +45,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Toko::class);
     }
+
+    public function invoices()
+    {
+        return $this->hasMany(Invoice::class);
+    }
 }
